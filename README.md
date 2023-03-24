@@ -4,6 +4,7 @@ Build docker containers
 
 ```bash
 make build
+make run
 ```
 
 # Second step
