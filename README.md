@@ -19,7 +19,32 @@ make in-php
 While in the container, run:
 
 ```bash
+yarn install
+yarn watch
+```
+
+# Forth step
+
+While in the container, run:
+
+```bash
 symfony console fruits:fetch --env=dev -vvv
+```
+
+# Fifth step
+
+Test in browser
+
+```bash
+https://localhost/
+```
+
+# Mailer
+
+Open this in browser, to see emails:
+
+```bash
+http://localhost:1080/
 ```
 
 # CS PHP Fixer
