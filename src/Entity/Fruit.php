@@ -22,6 +22,7 @@ class Fruit
 
     #[ORM\Column(length: 255)]
     private ?string $genus = null;
+
     #[ORM\Column(length: 255)]
     private ?string $fruitOrder = null;
 
@@ -84,6 +85,7 @@ class Fruit
 
         return $this;
     }
+
     public function getFruitOrder(): ?string
     {
         return $this->fruitOrder;

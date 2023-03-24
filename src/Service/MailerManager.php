@@ -10,7 +10,6 @@ final class MailerManager
 {
     public function __construct(private readonly MailerInterface $mailer)
     {
-
     }
 
     public function sendFruitsFetchedEmail(int $nbrNewFruits): void

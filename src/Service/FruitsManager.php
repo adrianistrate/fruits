@@ -33,7 +33,7 @@ final class FruitsManager implements LoggerAwareInterface
         // Get all families
         $families = $this->familyRepository->findAll();
         $familiesWithKeys = array_combine(
-            array_map(static fn(Family $family) => $family->getName(), $families),
+            array_map(static fn (Family $family) => $family->getName(), $families),
             $families
         );
 
@@ -78,7 +78,7 @@ final class FruitsManager implements LoggerAwareInterface
 
                 $this->fruitRepository->save($fruit, $index === $nbrNewFruits - 1);
 
-                $index++;
+                ++$index;
             }
 
             $this->mailerManager->sendFruitsFetchedEmail($nbrNewFruits);

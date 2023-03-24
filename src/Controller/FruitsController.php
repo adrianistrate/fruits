@@ -50,7 +50,7 @@ class FruitsController extends AbstractController
             return $this->redirectToRoute('app_fruits');
         }
 
-        switch($request->attributes->get('action')) {
+        switch ($request->attributes->get('action')) {
             case 'add':
                 if (count($favorites) < 10 && !in_array($fruit->getId(), $favorites, true)) {
                     $favorites[] = $fruit->getId();
