@@ -27,8 +27,13 @@ services:
 ###> symfony/mercure-bundle ###
 ###< symfony/mercure-bundle ###
 
-###> doctrine/doctrine-bundle ###
-  database:
+###> symfony/mailer ###
+  mailer:
+    image: schickling/mailcatcher
+#    ports: ["1025", "1080"]
     ports:
-      - "5432"
-###< doctrine/doctrine-bundle ###
+      - "1025:1025"
+      - "1080:1080"
+    environment:
+      - VIRTUAL_HOST=mailcatcher.localhost
+###< symfony/mailer ###

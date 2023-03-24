@@ -1,0 +1,48 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Fruits!{% endblock %}
+
+{% block body %}
+    <ul class="list-group">
+        {% for fruit in favoriteFruits %}
+            {{ include ('fruits/_fruit.html.twig', {hideActions: true}) }}
+        {% else %}
+            <li class="list-group-item">No favorite fruits yet!</li>
+        {% endfor %}
+    </ul>
+
+    <div class="border-1 border row mt-5 p-3">
+        <div class="col-2 fw-bold text-center">
+            Carbohydrates
+        </div>
+        <div class="col-2 fw-bold text-center">
+            Protein
+        </div>
+        <div class="col-3 fw-bold text-center">
+            Fat
+        </div>
+        <div class="col-2 fw-bold text-center">
+            Calories
+        </div>
+        <div class="col-2 fw-bold text-center">
+            Sugar
+        </div>
+    </div>
+    <div class="border-1 border row p-3">
+        <div class="col-2 fw-bold text-center">
+            {{ nutritionStats.carbohydrates }}
+        </div>
+        <div class="col-2 fw-bold text-center">
+            {{ nutritionStats.protein }}
+        </div>
+        <div class="col-3 fw-bold text-center">
+            {{ nutritionStats.fat }}
+        </div>
+        <div class="col-2 fw-bold text-center">
+            {{ nutritionStats.calories }}
+        </div>
+        <div class="col-2 fw-bold text-center">
+            {{ nutritionStats.sugar }}
+        </div>
+    </div>
+{% endblock %}

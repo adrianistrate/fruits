@@ -1,0 +1,33 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Fruits!{% endblock %}
+
+{% block body %}
+    {{ form_start(form) }}
+    {{ form_widget(form) }}
+    <button class="btn btn-primary">Search</button>
+    {{ form_end(form) }}
+
+    <div class="small mt-5 mb-3 d-flex flex-row justify-content-between">
+        <div>
+            <span>Total results:</span>
+            <span class="fw-bold">{{ pagination.getTotalItemCount }}</span>
+        </div>
+        <div>
+            <span>Total favorites:</span>
+            <span class="fw-bold">{{ app.session.get('favorites')|length }}</span>
+        </div>
+    </div>
+
+    {{ include('fruits/_messages.html.twig') }}
+
+    <ul class="list-group">
+        {% for fruit in pagination %}
+            {{ include ('fruits/_fruit.html.twig') }}
+        {% endfor %}
+    </ul>
+
+    <div class="navigation mt-5">
+        {{ knp_pagination_render(pagination, null, queryParams) }}
+    </div>
+{% endblock %}

@@ -55,10 +55,9 @@ RUN set -eux; \
 
 ###> recipes ###
 ###> doctrine/doctrine-bundle ###
-RUN apk add --no-cache --virtual .pgsql-deps postgresql-dev; \
-	docker-php-ext-install -j"$(nproc)" pdo_pgsql; \
-	apk add --no-cache --virtual .pgsql-rundeps so:libpq.so.5; \
-	apk del .pgsql-deps
+RUN docker-php-ext-install pdo pdo_mysql
+# for mysqli if you want
+RUN docker-php-ext-install mysqli && docker-php-ext-enable mysqli
 ###< doctrine/doctrine-bundle ###
 ###< recipes ###
 

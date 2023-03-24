@@ -1,0 +1,33 @@
+<li class="list-group-item d-flex flex-row justify-content-between align-items-center">
+    <div>
+        <div class="fw-bold">
+            #{{ fruit.id }}
+        </div>
+
+        <div>
+            {{ fruit }}
+        </div>
+
+        <div class="small">
+            {{ fruit.family }}
+        </div>
+    </div>
+
+    <div>
+        {% if hideActions|default(false) == false %}
+            {% if fruit.id not in app.session.get('favorites') %}
+                {% if app.session.get('favorites')|length < 10 %}
+                    <form method="POST" action="{{ path('app_fruits_manage_favorites', {id: fruit.id, action: 'add'}) }}">
+                        <input type="hidden" name="_token" value="{{ csrf_token('add-to-favorites') }}">
+                        <button type="submit" class="btn btn-success">Add to favorites ❤️</button>
+                    </form>
+                {% endif %}
+            {% else %}
+                <form method="POST" action="{{ path('app_fruits_manage_favorites', {id: fruit.id, action: 'remove'}) }}">
+                    <input type="hidden" name="_token" value="{{ csrf_token('add-to-favorites') }}">
+                    <button type="submit" class="btn btn-danger">Remove from favorites 🗑️️</button>
+                </form>
+            {% endif %}
+        {% endif %}
+    </div>
+</li>
